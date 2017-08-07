@@ -3,5 +3,6 @@
   remote_user: root
   roles:
   - angstwad.docker_ubuntu
+  - andrewrothstein.emacs
     
   
