@@ -1,0 +1,13 @@
+[servers:children]
+production
+stage
+
+[production]
+165.227.17.163 nickname=prod-1 droplet=1 branch=master
+165.227.17.157 nickname=prod-2 droplet=1 branch=master
+
+[production:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[stage] #currently using local as stage
+localhost nickname=stage droplet=0 branch=dev
