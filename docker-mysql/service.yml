@@ -37,6 +37,12 @@ services:
       NGINX_SERVER_ROOT: /var/www/html
     volumes:
       - codebase:/var/www/html
+    depends_on:
+      - php
+    labels:
+      - 'traefik.backend=nginx'
+      - 'traefik.port=80'
+      - 'traefik.frontend.rule=Host:wp.docker.localhost'
     deploy:
       replicas: 1
 
