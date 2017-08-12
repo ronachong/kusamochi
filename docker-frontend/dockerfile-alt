@@ -1,0 +1,15 @@
+# Use official node image as parent image
+FROM node:argon
+
+# Set working dir to /app
+WORKDIR /app
+
+# Copy cwd contents into container at /app
+COPY kusamochi-frontend/build /app
+RUN npm install -g serve
+
+# Make port 80 available to world outside container
+EXPOSE 80
+
+# Run app.py when container is launched
+CMD ["serve", "-s", "/app", "-p", "80"]
