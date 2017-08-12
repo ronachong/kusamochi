@@ -42,8 +42,7 @@ services:
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
-      # - 'traefik.frontend.rule=Host:wp.docker.localhost'
-      - 'traefik.frontend.rule=Host:localhost'
+      - 'traefik.frontend.rule=Host:wp.docker.localhost'
     deploy:
       replicas: 1
 
