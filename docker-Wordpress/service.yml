@@ -124,14 +124,22 @@ services:
 
   traefik:
     image: traefik
-    command: -c /dev/null --web --docker --docker.swarmmode --docker.domain=docker.localhost --logLevel=INFO
+    command: --web --docker --docker.swarmmode --docker.watch --docker.domain=docker.localhost --logLevel=INFO
     ports:
       - '8000:80'
-#      - '8080:8080' # Dashboard
+      - '8080:8080' # Dashboard
+      - '443:443'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
+    labels:
+      - "traefik.enable=false"
     deploy:
       replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
 
 volumes:
   codebase:
