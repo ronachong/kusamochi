@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/header.js';
-import Content from './components/content.js';
+import Torso from './components/torso.js';
 import Footer from './components/footer.js';
 import './App.css';
 
@@ -13,12 +13,20 @@ const styles = {
   },
 }
 
+const moduleMap = {
+  'home': '',
+  'morgue': '',
+  'portfolio': '',
+  'diary': '',
+  'BBS': '',
+}
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'kusamochi',
-      modules: ['home', 'morgue', 'portfolio', 'diary', 'BBS'],
       view: 'home'
     };
   }
@@ -29,7 +37,7 @@ class App extends Component {
           className="App-header"
           title={this.state.title}
         />
-        <Content />
+        <Torso />
         <Footer />
       </div>
     );

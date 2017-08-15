@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import '../App.css';
 
 const styles = {
-  contentContainer : {
+  torsoContainer : {
     height: '100%',
   },
 }
 
-class Content extends Component {
+class Torso extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,11 +17,11 @@ class Content extends Component {
   render() {
     console.log(this.props);
     return (
-      <div style={styles.contentContainer}>
+      <div style={styles.torsoContainer}>
         <p>Some text here</p>
       </div>
     );
   }
 }
 
-export default Content;
+export default Torso;
