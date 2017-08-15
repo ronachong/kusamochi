@@ -16,12 +16,18 @@ class Torso extends Component {
   }
   render() {
     console.log(this.props);
+    const { view, viewMap } = this.props;
+    console.log(viewMap[view]);
     return (
       <div style={styles.torsoContainer}>
-        <p>Some text here</p>
+        <p> hello </p>
+        {React.createElement(viewMap[view].default)}
       </div>
     );
   }
-}
+};
+
+//
+
 
 export default Torso;

@@ -13,21 +13,19 @@ const styles = {
   },
 }
 
-const moduleMap = {
-  'home': '',
-  'morgue': '',
-  'portfolio': '',
-  'diary': '',
-  'BBS': '',
-}
-
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'kusamochi',
-      view: 'home'
+      viewMap: {
+        'home': require('./components/tso-modules/home'),
+        'morgue': require('./components/tso-modules/morgue'),
+        'portfolio': require('./components/tso-modules/portfolio'),
+        'diary': require('./components/tso-modules/diary'),
+        'bbs': require('./components/tso-modules/bbs'),
+      },
+      view: 'bbs',
     };
   }
   render() {
@@ -37,7 +35,10 @@ class App extends Component {
           className="App-header"
           title={this.state.title}
         />
-        <Torso />
+        <Torso
+          view={this.state.view}
+          viewMap={this.state.viewMap}
+        />
         <Footer />
       </div>
     );
