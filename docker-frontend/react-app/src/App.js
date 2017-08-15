@@ -7,10 +7,9 @@ import './App.css';
 const styles = {
   appContainer : {
     height: '100%',
-    width: '100%',
-    // display: 'flex',
-    // flexGrow: 1,      // allow site div to take up browser window
-    // flexDirection: 'row',
+    display: 'flex',
+    flexGrow: 1,      // allow site div to take up browser window
+    flexDirection: 'column',
   },
 }
 
