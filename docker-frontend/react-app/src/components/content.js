@@ -5,7 +5,6 @@ import '../App.css';
 const styles = {
   contentContainer : {
     height: '100%',
-    flexGrow: 1,
   },
 }
 
