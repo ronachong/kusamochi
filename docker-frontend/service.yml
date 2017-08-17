@@ -1,12 +1,12 @@
 version: "3" # makes yml compatible w/ swarm mode
 services:
-  kusamochi-frontend:
+  website:
     image: rochong/kusamochi-fe:latest
     deploy:
       replicas: 2
       labels:
         - "traefik.enable=manual"
-        - "traefik.backend=kusamochi-frontend"
+        - "traefik.backend=website"
         - "traefik.port=80"
         - "traefik.domain=kusamochi.me"
         - "traefik.domain_prefix=test"
