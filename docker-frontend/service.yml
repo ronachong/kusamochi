@@ -5,6 +5,7 @@ services:
     deploy:
       replicas: 2
       labels:
+        - "traefik.enable=true"
         - "traefik.backend=kusamochi-frontend"
         - "traefik.port=80"
         - "traefik.frontend.rule=Host:test.kusamochi.me"
