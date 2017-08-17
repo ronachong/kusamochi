@@ -15,8 +15,8 @@ services:
           memory: 50M
       restart_policy:
         condition: on-failure
-    ports:
-      - "80:3000"
+    networks:
+      - kusamochi-traefik_public
 
 networks:
   kusamochi-traefik_public:
