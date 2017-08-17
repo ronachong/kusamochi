@@ -1,6 +1,6 @@
 version: "3" # makes yml compatible w/ swarm mode
 services:
-  web:
+  kusamochi-frontend:
     image: rochong/kusamochi-fe:latest
     deploy:
       replicas: 2
