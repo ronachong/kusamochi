@@ -4,6 +4,11 @@ services:
     image: rochong/kusamochi-fe:latest
     deploy:
       replicas: 2
+      labels:
+      - "traefik.backend=kusamochi-frontend"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=PathPrefixStrip:/http/"
+      - "traefik.docker.network=kusamochi-traefik_public"
       resources:
         limits:
           cpus: "0.1"
@@ -12,7 +17,7 @@ services:
         condition: on-failure
     ports:
       - "80:3000"
-    networks:
-      - webnet
+
 networks:
-  webnet:
+  kusamochi-traefik_public:
+    external: true
