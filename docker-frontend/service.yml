@@ -8,7 +8,7 @@ services:
         - "traefik.enable=true"
         - "traefik.backend=kusamochi-frontend"
         - "traefik.port=80"
-        - "traefik.frontend.rule=Host:test.kusamochi.me"
+        - "traefik.frontend.rule=Host:kusamochi.me"
         - "traefik.docker.network=kusamochi-traefik_public"
       resources:
         limits:
