@@ -5,10 +5,10 @@ services:
     deploy:
       replicas: 2
       labels:
-      - "traefik.backend=kusamochi-frontend"
-      - "traefik.port=80"
-      - "traefik.frontend.rule=Host:test.kusamochi.me"
-      - "traefik.docker.network=kusamochi-traefik_public"
+        - "traefik.backend=kusamochi-frontend"
+        - "traefik.port=80"
+        - "traefik.frontend.rule=Host:test.kusamochi.me"
+        - "traefik.docker.network=kusamochi-traefik_public"
       resources:
         limits:
           cpus: "0.1"
