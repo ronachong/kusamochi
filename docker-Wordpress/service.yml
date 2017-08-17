@@ -39,12 +39,13 @@ services:
       - codebase:/var/www/html
     depends_on:
       - php
-    labels:
-      - 'traefik.backend=nginx'
-      - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:wp.docker.localhost'
     deploy:
       replicas: 1
+      labels:
+        - 'traefik.backend=nginx'
+        - 'traefik.port=80'
+        - 'traefik.frontend.rule=Host:wp.docker.localhost'
+        - 'traefik.docker.network=kusamochi-traefik_public'
 
 #  apache:
 #    image: wodby/wordpress-apache:2.4-1.0.0
@@ -115,31 +116,32 @@ services:
     command: --no-auth
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - 'traefik.backend=portainer'
-      - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:portainer.wp.docker.localhost'
     deploy:
       replicas: 1
+      labels:
+        - 'traefik.backend=portainer'
+        - 'traefik.port=9000'
+        - 'traefik.frontend.rule=Host:portainer.wp.docker.localhost'
+        - 'traefik.docker.network=kusamochi-traefik_public'
 
-  traefik:
-    image: traefik
-    command: --web --docker --docker.swarmmode --docker.watch --docker.domain=docker.localhost --logLevel=INFO
-    ports:
-      - '8000:80'
-      - '8080:8080' # Dashboard
-      - '443:443'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /dev/null:/traefik.toml
-    labels:
-      - "traefik.enable=false"
-    deploy:
-      replicas: 1
-      placement:
-        constraints: [node.role == manager]
-      restart_policy:
-        condition: on-failure
+  # traefik:
+  #   image: traefik
+  #   command: --web --docker --docker.swarmmode --docker.watch --docker.domain=docker.localhost --logLevel=INFO
+  #   ports:
+  #     - '8000:80'
+  #     - '8080:8080' # Dashboard
+  #     - '443:443'
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - /dev/null:/traefik.toml
+  #   labels:
+  #     - "traefik.enable=false"
+  #   deploy:
+  #     replicas: 1
+  #     placement:
+  #       constraints: [node.role == manager]
+  #     restart_policy:
+  #       condition: on-failure
 
 volumes:
   codebase:
