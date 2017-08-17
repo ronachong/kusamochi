@@ -7,7 +7,7 @@ services:
       labels:
       - "traefik.backend=kusamochi-frontend"
       - "traefik.port=80"
-      - "traefik.frontend.rule=PathPrefixStrip:/http/"
+      - "traefik.frontend.rule=Host:test.kusamochi.me"
       - "traefik.docker.network=kusamochi-traefik_public"
       resources:
         limits:
