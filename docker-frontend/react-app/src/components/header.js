@@ -8,13 +8,32 @@ class Header extends Component {
     this.state = {
     };
   }
+  mouseEnter() {
+    console.log("Mouse enter.");
+    // let's have nav icon appear
+  }
+  mouseLeave() {
+    console.log("Mouse leave.");
+    // let's have nav icon disappear
+  }
+  onClick() {
+    console.log("Mouse click.")
+    // let's have nav appear
+  }
   render() {
     console.log(this.props);
     return (
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{this.props.title}</h1>
-      </header>
+      <a
+        href='#'
+        onMouseEnter={() => this.mouseEnter()}
+        onMouseLeave={() => this.mouseLeave()}
+        onClick={() => this.onClick()}
+      >
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>{this.props.title}</h1>
+        </header>
+      </a>
     );
   }
 }

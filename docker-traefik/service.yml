@@ -5,8 +5,8 @@ services:
     image: traefik
     command: --web --docker --docker.swarmmode --docker.watch --docker.domain=traefik --logLevel=DEBUG
     ports:
-      - "7000:80"
-      - "7080:8080"
+      - "8000:80"
+      - "8080:8080"
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
