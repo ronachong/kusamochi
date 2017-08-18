@@ -5,11 +5,8 @@ services:
     deploy:
       replicas: 2
       labels:
-        - "traefik.enable=manual"
         - "traefik.backend=website"
         - "traefik.port=80"
-        - "traefik.domain=kusamochi.me"
-        - "traefik.domain_prefix=test"
         - "traefik.frontend.rule=Host:kusamochi.me"
         - "traefik.docker.network=kusamochi-traefik_public"
       resources:
