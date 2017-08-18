@@ -14,7 +14,9 @@ services:
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # I want to manage volumes manually.
     deploy:
       replicas: 1
-
+    networks:
+      - kusamochi-traefik_public
+      
   php:
     image: wodby/wordpress:4-7.1-2.2.0
     environment:
@@ -27,7 +29,9 @@ services:
       - codebase:/var/www/html
     deploy:
       replicas: 1
-
+    networks:
+      - kusamochi-traefik_public
+      
   nginx:
     image: wodby/wordpress-nginx:4-1.13-2.2.0
     environment:
@@ -45,8 +49,10 @@ services:
         - 'traefik.enable=true'
         - 'traefik.backend=nginx'
         - 'traefik.port=80'
-        - 'traefik.frontend.rule=Host:wp.docker.localhost'
+        - 'traefik.frontend.rule=Host:wp.kusamochi.me'
         - 'traefik.docker.network=kusamochi-traefik_public'
+    networks:
+      - kusamochi-traefik_public
 
 #  apache:
 #    image: wodby/wordpress-apache:2.4-1.0.0
@@ -123,9 +129,12 @@ services:
         - 'traefik.enable=true'
         - 'traefik.backend=portainer'
         - 'traefik.port=9000'
-        - 'traefik.frontend.rule=Host:portainer.wp.docker.localhost'
+        - 'traefik.frontend.rule=Host:portainer.kusamochi.me'
         - 'traefik.docker.network=kusamochi-traefik_public'
+    networks:
+      - kusamochi-traefik_public
 
+        
   # traefik:
   #   image: traefik
   #   command: --web --docker --docker.swarmmode --docker.watch --docker.domain=docker.localhost --logLevel=INFO
@@ -150,3 +159,5 @@ volumes:
 
 networks:
   webnet:
+  kusamochi-traefik_public:
+    external: true
