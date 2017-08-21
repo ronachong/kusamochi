@@ -4,6 +4,11 @@ import Torso from './components/torso.js';
 import Footer from './components/footer.js';
 import './App.css';
 
+import { Provider } from 'react-redux';
+import CombinedReducer from './redux/reducers/combined';
+
+const Store = createStore(CombinedReducer)
+
 const styles = {
   appContainer : {
     height: '100%',
@@ -31,17 +36,20 @@ class App extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="App" style={styles.appContainer}>
-        <Header
-          className="App-header"
-          title={this.state.title}
-        />
-        <Torso
-          view={this.state.view}
-          viewMap={this.state.viewMap}
-        />
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div className="App" style={styles.appContainer}>
+          <Overlay />
+          <Header
+            className="App-header"
+            title={this.state.title}
+          />
+          <Torso
+            view={this.state.view}
+            viewMap={this.state.viewMap}
+          />
+          <Footer />
+        </div>
+      </Provider>
     );
   }
 }
