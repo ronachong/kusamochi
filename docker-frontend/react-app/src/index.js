@@ -5,9 +5,9 @@ import './index.css';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import CombinedReducer from './redux/reducers/combined';
+import Reducers from './redux/reducers/all';
 
-const store = createStore(CombinedReducer)
+const store = createStore(Reducers)
 
 console.log(App);
 

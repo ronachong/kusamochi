@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { overlayReducer } from './overlay'
 
-const CombinedReducer = combineReducers({
+const Reducers = combineReducers({
   overlay: overlayReducer
 });
 
-export default CombinedReducer
+export default Reducers
