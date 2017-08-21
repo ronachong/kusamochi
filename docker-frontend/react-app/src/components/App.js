@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Overlay from './overlay.js';
+import Modal from './modal.js';
 import Header from './header.js';
 import Torso from './torso.js';
 import Footer from './footer.js';
@@ -30,9 +30,9 @@ class App extends Component {
     };
   }
 
-  renderSiteOverlay(overlay){
+  renderSiteModal(modal){
     return (
-      <Overlay state={ overlay['on'] } which={ overlay['which'] } />
+      <Modal state={ modal['on'] } which={ modal['which'] } />
     );
   }
 
@@ -53,11 +53,11 @@ class App extends Component {
   }
 
   render() {
-    const { overlay, toggleOverlay } = this.props.overlay
+    const { modal, toggleModal } = this.props.modal
 
     return (
         <div className="App" style={styles.appContainer}>
-          { this.renderSiteOverlay(overlay) }
+          { this.renderSiteModal(modal) }
           { this.renderSiteLayout() }
         </div>
     );

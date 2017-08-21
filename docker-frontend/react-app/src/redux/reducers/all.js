@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { overlayReducer } from './overlay'
+import { modalReducer } from './modal'
 
 const Reducers = combineReducers({
-  overlay: overlayReducer
+  modal: modalReducer
 });
 
 export default Reducers

@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import components from '../components/all';
-import { toggleOverlay } from './actions/overlay';
+import { toggleModal } from './actions/modal';
 
 export const App = connect(
   function mapStateToProps(state)
   {
-    return { overlay: state };
+    return { modal: state };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      toggleOverlay: (value, type) => dispatch(toggleOverlay(value, type))
+      toggleModal: (value, type) => dispatch(toggleModal(value, type))
     }
   }
 )(components['App'])

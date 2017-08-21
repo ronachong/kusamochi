@@ -13,7 +13,7 @@ console.log(App);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App overlay={store.overlay} />
+    <App modal={store.modal} />
   </Provider>,
   document.getElementById('root')
 );

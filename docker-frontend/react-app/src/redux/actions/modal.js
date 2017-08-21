@@ -1,9 +1,9 @@
-export function toggleOverlay(value, overlayType) {
+export function toggleModal(value, modalType) {
   return {
     type: 'TOGGLE_OVERLAY',
     payload: {
       on: value,
-      which: overlayType
+      which: modalType
     }
   }
 }
