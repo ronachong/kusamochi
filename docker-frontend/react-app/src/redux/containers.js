@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as components from '../components';
+import components from '../components/all';
 import { toggleOverlay } from './actions/overlay';
 
 export const App = connect(
@@ -9,7 +9,9 @@ export const App = connect(
   },
   function mapDispatchToProps(dispatch) {
     return {
-      toggleOverlay: value, type => dispatch(toggleOverlay(value, type))
+      toggleOverlay: (value, type) => dispatch(toggleOverlay(value, type))
     }
   }
-)(components.App)
+)(components['App'])
+
+console.log(App)

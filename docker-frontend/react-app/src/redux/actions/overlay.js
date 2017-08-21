@@ -4,5 +4,6 @@ export function toggleOverlay(value, overlayType) {
     payload: {
       on: value,
       which: overlayType
+    }
   }
 }
