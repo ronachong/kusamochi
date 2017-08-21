@@ -30,26 +30,26 @@ class App extends Component {
     };
   }
 
-  renderSiteLayout(overlay){
-    if (overlay['on']) {
-      return (
-        <Overlay />
-      );
-    } else {
-      return(
-        <div>
-          <Header
-            className="App-header"
-            title={this.state.title}
-          />
-          <Torso
-            view={this.state.view}
-            viewMap={this.state.viewMap}
-          />
-          <Footer />
-        </div>
-      )
-    }
+  renderSiteOverlay(overlay){
+    return (
+      <Overlay state={ overlay['on'] } which={ overlay['which'] } />
+    );
+  }
+
+  renderSiteLayout(){
+    return(
+      <div className="App" style={styles.appContainer}>
+        <Header
+          className="App-header"
+          title={this.state.title}
+        />
+        <Torso
+          view={this.state.view}
+          viewMap={this.state.viewMap}
+        />
+        <Footer />
+      </div>
+    )
   }
 
   render() {
@@ -57,7 +57,8 @@ class App extends Component {
 
     return (
         <div className="App" style={styles.appContainer}>
-          { this.renderSiteLayout(overlay) }
+          { this.renderSiteOverlay(overlay) }
+          { this.renderSiteLayout() }
         </div>
     );
   }

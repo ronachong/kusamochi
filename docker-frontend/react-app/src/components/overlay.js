@@ -13,6 +13,11 @@ import '../App.css';
 //   );
 // }
 
+var hideIfFalse = function(boolean) {
+  return boolean ? {} : {display: 'none'};
+};
+
+
 class Overlay extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +27,7 @@ class Overlay extends Component {
   render() {
     console.log(this.props);
     return (
-          <div>
+          <div style={ hideIfFalse(this.props.state ) }>
             <img src={logo} className="App-logo" alt="logo" />
             <p>This is supposed to be the overlay.</p>
           </div>
