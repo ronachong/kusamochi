@@ -5,7 +5,7 @@ import Modal from 'react-overlays/lib/Modal';
 import Transition, { ENTERED, ENTERING } from 'react-transition-group/Transition';
 import injectCss from '../styles/css/injectCss';
 
-const FADE_DURATION = 200;
+const FADE_DURATION = 300;
 
 injectCss(`
   .fade {

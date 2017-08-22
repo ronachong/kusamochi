@@ -23,7 +23,6 @@ class Header extends Component {
     this.props.toggleModal(true, 'nav');
   }
   render() {
-    console.log(this.props);
     return (
       <a
         href='#'
