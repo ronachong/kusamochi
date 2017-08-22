@@ -18,7 +18,8 @@ const styles = {
   },
   modalTextContainer : {
     position: 'absolute',
-    width: 400,
+    width: '90%',
+    height: '80%',
     top: '50%', left: '50%',
     transform: `translate(-${50}%, -${50}%)`,
     border: '1px solid #fff555',
