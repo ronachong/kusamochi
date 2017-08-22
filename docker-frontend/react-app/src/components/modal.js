@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { Modal, Transition } from 'react-bootstrap';
-import '../styles/css/modal.scss';
-
+import Modal from 'react-overlays/lib/Modal';
+import Transition, { ENTERED, ENTERING } from 'react-transition-group/Transition';
+import injectCss from '../styles/css/injectCss';
 
 const FADE_DURATION = 200;
+
+injectCss(`
+  .fade {
+    opacity: 0;
+    transition: opacity ${FADE_DURATION}ms linear;
+  }
+  .in {
+    opacity: 1;
+  }
+`);
 
 const styles = {
   modal : {
@@ -31,8 +41,24 @@ const styles = {
     boxShadow: '0 5px 15px rgba(0,0,0,.5)',
     padding: 20,
     textAlign: 'center'
+  },
+  fadeTransition : {
+    [ENTERING]: 'in',
+    [ENTERED]: 'in',
   }
 }
+
+const FadeTransition = ({ children, ...props }) => {
+  return (
+    <Transition {...props} timeout={FADE_DURATION}>
+      {(status, innerProps) => React.cloneElement(children, {
+        ...innerProps,
+        className: `fade ${styles.fadeTransition[status]} ${children.props.className}`,
+      })}
+    </Transition>
+  );
+}
+
 
 // export function Modal(props) {
 //   const { state, toggleModal } = props;
@@ -54,24 +80,19 @@ class MenuModal extends Component {
   }
   render() {
     console.log(this.props);
+    console.log(this)
     return (
-      <Transition
-        in={this.state.in}
-        timeout={FADE_DURATION}
-        className='fade'
-        enteredClassName='in'
-        enteringClassName='in'>
         <Modal
+          transition={FadeTransition}
           show={this.props.state}
           onHide={this.props.toggleModal}
           style={styles.modal}
           backdropStyle={styles.modalBackdrop}>
-          <Modal.Body style={styles.modalTextContainer}>
+          <div style={styles.modalTextContainer}>
             <a>Link 1</a><br />
             <a>Link 2</a>
-          </Modal.Body>
+          </div>
         </Modal>
-      </Transition>
     );
   }
 }
