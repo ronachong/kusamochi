@@ -31,10 +31,8 @@ class App extends Component {
   }
 
   renderSiteModal(modal){
-    console.log("inside render modal is", modal);
-    console.log(modal['on']);
     return (
-      <MenuModal state={ modal['on'] } which={ modal['which'] } />
+      <MenuModal state={ modal.get('on') } which={ modal.get('which') } />
     );
   }
 
@@ -56,16 +54,11 @@ class App extends Component {
   }
 
   render() {
-    console.log("this.props.modal is", this.props.modal);
-    console.log("this.props.toggleModal is", this.props.toggleModal);
-    const { modal, placeholder } = this.props.modal;
-    console.log("modal is", modal);
-    // const { toggleModal } = this.props.toggleModal
-
+    const { modal } = this.props.modal;
 
     return (
         <div className="App" style={styles.appContainer}>
-          { this.renderSiteModal(modal) }
+          { this.renderSiteModal(modal) } // TODO: check why this.props.modal doesn't work
           { this.renderSiteLayout(this.props.toggleModal) }
         </div>
     );
