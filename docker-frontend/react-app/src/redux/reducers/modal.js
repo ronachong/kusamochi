@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-const initModal = Map({ on: 0, which: 'nav' });
+const initModal = Map({ on: false, which: 'nav' });
 
 // modalReducer computes new state for component
 export function modalReducer(modal=initModal, action) {
