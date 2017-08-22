@@ -75,9 +75,9 @@ class MenuModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      in: true
     };
   }
+
   render() {
     console.log(this.props);
     console.log(this)
@@ -88,7 +88,10 @@ class MenuModal extends Component {
           onHide={this.props.toggleModal}
           style={styles.modal}
           backdropStyle={styles.modalBackdrop}>
-          <div style={styles.modalTextContainer}>
+          <div
+            style={styles.modalTextContainer}
+            onMouseLeave={() => this.props.toggleModal()}
+          >
             <a>Link 1</a><br />
             <a>Link 2</a>
           </div>

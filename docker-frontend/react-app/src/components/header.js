@@ -20,7 +20,7 @@ class Header extends Component {
   onClick() {
     console.log("Mouse click.")
     // let's have nav appear
-    //this.props.toggleModal(true, 'nav');
+    this.props.toggleModal(true, 'nav');
   }
   render() {
     console.log(this.props);
@@ -33,6 +33,8 @@ class Header extends Component {
       >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <br />
+          <label>Site Nav</label>
           <h1>{this.props.title}</h1>
         </header>
       </a>
