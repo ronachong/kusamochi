@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { Modal } from 'react-bootstrap';
+import { Modal, Transition } from 'react-bootstrap';
+import '../styles/css/modal.scss';
+
+
+const FADE_DURATION = 200;
 
 const styles = {
   modal : {
@@ -45,25 +49,29 @@ class MenuModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      in: true
     };
   }
   render() {
     console.log(this.props);
     return (
-      <Modal
-        show={this.props.state}
-        onHide={this.props.toggleModal}
-        style={styles.modal}
-        backdropStyle={styles.modalBackdrop}>
-        <Modal.Body style={styles.modalTextContainer}>
-          <a>Link 1</a><br />
-          <a>Link 2</a>
-        </Modal.Body>
-      </Modal>
-      // <div style={ hideIfFalse(this.props.state ) }>
-      //   <img src={logo} className="App-logo" alt="logo" />
-      //   <p>This is supposed to be the modal.</p>
-      // </div>
+      <Transition
+        in={this.state.in}
+        timeout={FADE_DURATION}
+        className='fade'
+        enteredClassName='in'
+        enteringClassName='in'>
+        <Modal
+          show={this.props.state}
+          onHide={this.props.toggleModal}
+          style={styles.modal}
+          backdropStyle={styles.modalBackdrop}>
+          <Modal.Body style={styles.modalTextContainer}>
+            <a>Link 1</a><br />
+            <a>Link 2</a>
+          </Modal.Body>
+        </Modal>
+      </Transition>
     );
   }
 }
