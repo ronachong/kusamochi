@@ -11,6 +11,7 @@ class Header extends Component {
   mouseEnter() {
     console.log("Mouse enter.");
     // let's have nav icon appear
+    this.props.toggleModal(true, 'nav');
   }
   mouseLeave() {
     console.log("Mouse leave.");
@@ -19,7 +20,7 @@ class Header extends Component {
   onClick() {
     console.log("Mouse click.")
     // let's have nav appear
-    this.props.toggleModal(true, 'nav');
+    //this.props.toggleModal(true, 'nav');
   }
   render() {
     console.log(this.props);
