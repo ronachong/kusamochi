@@ -36,13 +36,14 @@ class App extends Component {
     );
   }
 
-  renderSiteLayout(toggleModal){
+  renderSiteLayout(){
+    console.log(this.props.toggleModal);
     return(
       <div className="App" style={styles.appContainer}>
         <Header
           className="App-header"
           title={this.state.title}
-          toggleModal={toggleModal}
+          toggleModal={this.props.toggleModal}
         />
         <Torso
           view={this.state.view}
@@ -59,7 +60,7 @@ class App extends Component {
     return (
         <div className="App" style={styles.appContainer}>
           { this.renderSiteModal(modal) } // TODO: check why this.props.modal doesn't work
-          { this.renderSiteLayout(this.props.toggleModal) }
+          { this.renderSiteLayout() }
         </div>
     );
   }
