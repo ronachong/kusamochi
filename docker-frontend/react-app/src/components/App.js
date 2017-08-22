@@ -32,7 +32,10 @@ class App extends Component {
 
   renderSiteModal(modal){
     return (
-      <MenuModal state={ modal.get('on') } which={ modal.get('which') } />
+      <MenuModal
+        state={modal.get('on')}
+        which={modal.get('which')}
+        toggleModal={this.props.toggleModal} />
     );
   }
 
