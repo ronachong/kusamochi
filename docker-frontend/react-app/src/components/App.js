@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from './modal.js';
+import MenuModal from './modal.js';
 import Header from './header.js';
 import Torso from './torso.js';
 import Footer from './footer.js';
@@ -31,17 +31,20 @@ class App extends Component {
   }
 
   renderSiteModal(modal){
+    console.log("inside render modal is", modal);
+    console.log(modal['on']);
     return (
-      <Modal state={ modal['on'] } which={ modal['which'] } />
+      <MenuModal state={ modal['on'] } which={ modal['which'] } />
     );
   }
 
-  renderSiteLayout(){
+  renderSiteLayout(toggleModal){
     return(
       <div className="App" style={styles.appContainer}>
         <Header
           className="App-header"
           title={this.state.title}
+          toggleModal={toggleModal}
         />
         <Torso
           view={this.state.view}
@@ -53,12 +56,17 @@ class App extends Component {
   }
 
   render() {
-    const { modal, toggleModal } = this.props.modal
+    console.log("this.props.modal is", this.props.modal);
+    console.log("this.props.toggleModal is", this.props.toggleModal);
+    const { modal, placeholder } = this.props.modal;
+    console.log("modal is", modal);
+    // const { toggleModal } = this.props.toggleModal
+
 
     return (
         <div className="App" style={styles.appContainer}>
           { this.renderSiteModal(modal) }
-          { this.renderSiteLayout() }
+          { this.renderSiteLayout(this.props.toggleModal) }
         </div>
     );
   }

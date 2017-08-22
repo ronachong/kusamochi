@@ -1,4 +1,4 @@
-export function toggleModal(value, modalType) {
+export default function toggleModal(value, modalType) {
   return {
     type: 'TOGGLE_OVERLAY',
     payload: {

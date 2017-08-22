@@ -19,6 +19,7 @@ class Header extends Component {
   onClick() {
     console.log("Mouse click.")
     // let's have nav appear
+    this.toggleModal(1, 'nav')
   }
   render() {
     console.log(this.props);
