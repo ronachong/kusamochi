@@ -1,5 +1,28 @@
 import React, { Component } from 'react';
 
+import { StyleSheet, css } from 'aphrodite';
+import { colors, gradients, fonts } from '../../styles/sitewide.js';
+
+const styles = StyleSheet.create({
+  moduleIcon: {
+    width: '165px',
+    height: '165px',
+  },
+
+  moduleIconCont: {
+    position: 'relative',
+    overflow: 'hidden',
+  },
+
+  moduleIconIframe: {
+    position: 'absolute',
+    top: 0, left: 0,
+  },
+
+
+
+})
+
 // div.horizontal-icons {
 //     display: flex;
 //     flex-direction: row;
@@ -112,17 +135,17 @@ const modules = [
   { key: 'portfolio',
     link: '#',
     label: 'art',
-    icon: '../../assets/2014-08ish.jpg'
+    icon: 'file:///Users/20/kusamochi/docker-frontend/react-app/src/components/menus/2014-08ish.jpg'
   },
   { key: 'morgue',
     link: '#',
     label: 'inspiration',
-    icon: '../../assets/quick%20-%201.jpg'
+    icon: 'file:///Users/20/kusamochi/docker-frontend/react-app/src/assets/quick%20-%201.jpg'
   },
   { key: 'diary',
     link: '#',
     label: 'diary',
-    icon: '../../assets/diary%20coding.png'
+    icon: 'file:///Users/20/kusamochi/docker-frontend/react-app/src/assets/diary%20coding.png'
   },
   { key: 'bbs',
     link: '#',
@@ -137,12 +160,27 @@ class ModuleIcon extends Component {
     this.state = {
     };
   }
+
+  getBackgroundStyle() {
+    return StyleSheet.create({
+      moduleIconOverlay: {
+        background: `red url(${this.props.icon}) no-repeat`,
+        // backgroundImage: `url("${this.props.icon}")`
+      }
+    });
+  }
+
   render() {
     return(
-      <a href={this.props.link}>
-        <iframe src={this.props.link}></iframe>
-        <div>
-          <h2>{this.props.label}</h2>
+      <a
+        className={css(styles.moduleIcon, styles.moduleIconCont)}
+        href={this.props.link}
+      >
+        <iframe
+          className={css(styles.moduleIcon, styles.moduleIconIframe)}
+          src={this.props.link}></iframe>
+        <div className={css(styles.moduleIcon, this.getBackgroundStyle().moduleIconOverlay)}>
+          <h2 className={css(styles.moduleIcon)}>{this.props.label}</h2>
         </div>
       </a>
     )
@@ -156,12 +194,13 @@ class SiteNav extends Component {
     };
   }
 
-  renderModuleIcons(){
+  renderModuleIcons() {
     return (modules.map((module) =>
       <ModuleIcon
         key={module.key}
         link={module.link}
         label={module.label}
+        icon={module.icon}
       />
     ));
   }

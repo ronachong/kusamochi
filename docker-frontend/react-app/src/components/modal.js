@@ -93,7 +93,7 @@ class MenuModal extends Component {
           backdropStyle={styles.modalBackdrop}>
           <div
             style={styles.modalTextContainer}
-            onMouseLeave={() => this.props.toggleModal(false, 'nav')}
+            onMouseLeave={() => console.log("hi") }
           >
             {React.createElement(menuMap[this.props.which].default)}
             <a>Link 1</a><br />
@@ -103,5 +103,7 @@ class MenuModal extends Component {
     );
   }
 }
+
+//onMouseLeave={() => this.props.toggleModal(false, 'nav')}
 
 export default MenuModal;
