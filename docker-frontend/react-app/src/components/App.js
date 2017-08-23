@@ -16,18 +16,19 @@ const styles = {
   },
 }
 
+const viewMap = {
+  'home': require('./tso-modules/home'),
+  'morgue': require('./tso-modules/morgue'),
+  'portfolio': require('./tso-modules/portfolio'),
+  'diary': require('./tso-modules/diary'),
+  'bbs': require('./tso-modules/bbs'),
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'kusamochi',
-      viewMap: {
-        'home': require('./tso-modules/home'),
-        'morgue': require('./tso-modules/morgue'),
-        'portfolio': require('./tso-modules/portfolio'),
-        'diary': require('./tso-modules/diary'),
-        'bbs': require('./tso-modules/bbs'),
-      },
       view: 'bbs',
     };
   }
@@ -52,7 +53,7 @@ class App extends Component {
         />
         <Torso
           view={this.state.view}
-          viewMap={this.state.viewMap}
+          viewMap={viewMap}
         />
         <Footer />
       </div>

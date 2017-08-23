@@ -58,6 +58,9 @@ const FadeTransition = ({ children, ...props }) => {
   );
 }
 
+const menuMap = {
+ 'nav': require('./menus/site-nav'),
+}
 
 // export function Modal(props) {
 //   const { state, toggleModal } = props;
@@ -74,6 +77,7 @@ class MenuModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
     };
   }
 
@@ -91,6 +95,7 @@ class MenuModal extends Component {
             style={styles.modalTextContainer}
             onMouseLeave={() => this.props.toggleModal(false, 'nav')}
           >
+            {React.createElement(menuMap[this.props.which].default)}
             <a>Link 1</a><br />
             <a>Link 2</a>
           </div>
