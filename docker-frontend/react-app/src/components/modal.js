@@ -36,7 +36,6 @@ const styles = {
     height: '80%',
     top: '45%', left: '50%',
     transform: `translate(-${50}%, -${50}%)`,
-    border: '1px solid #fff555',
     backgroundColor: 'white',
     boxShadow: '0 5px 15px rgba(0,0,0,.5)',
     padding: 20,
