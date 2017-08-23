@@ -34,7 +34,7 @@ const styles = {
     position: 'absolute',
     width: '90%',
     height: '80%',
-    top: '50%', left: '50%',
+    top: '45%', left: '50%',
     transform: `translate(-${50}%, -${50}%)`,
     border: '1px solid #fff555',
     backgroundColor: 'white',
@@ -90,7 +90,7 @@ class MenuModal extends Component {
           backdropStyle={styles.modalBackdrop}>
           <div
             style={styles.modalTextContainer}
-            onMouseLeave={() => this.props.toggleModal()}
+            onMouseLeave={() => this.props.toggleModal(false, 'nav')}
           >
             <a>Link 1</a><br />
             <a>Link 2</a>
