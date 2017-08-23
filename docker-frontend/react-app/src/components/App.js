@@ -5,6 +5,8 @@ import Torso from './torso.js';
 import Footer from './footer.js';
 import '../App.css';
 
+//TODO: update calls to toggleModal with false, nav
+
 const styles = {
   appContainer : {
     height: '100%',
